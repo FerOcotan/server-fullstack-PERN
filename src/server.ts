@@ -22,6 +22,10 @@ connectDB()
 const server = express()
 
 
+//leyendo datos
+
+server.use(express.json())
+
 server.use('/api/products', router)
 
 

@@ -8,6 +8,7 @@ import {
     CreatedAt,
     UpdatedAt,
     AllowNull,
+    Default,
  } from 'sequelize-typescript';
 
 
@@ -19,13 +20,14 @@ import {
 
 
 class Product extends Model<Product> {  
-    @Column({type: DataType.STRING(100)})
+    @Column({type: DataType.CHAR(50)})
     name: string
 
 
     @Column ({type: DataType.FLOAT})
     price: number
 
+    @Default(true)
     @Column     ({type: DataType.BOOLEAN})
     availibility: boolean
 

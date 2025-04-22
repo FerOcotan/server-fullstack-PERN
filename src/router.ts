@@ -1,5 +1,7 @@
 
 import { Router } from "express"
+import { body, check } from "express-validator";
+import createProduct from "./handlers/product";
 
 const router = Router()
 
@@ -9,10 +11,14 @@ router.get("/", (req, res) => {
     res.json("desde get")
 })
 
-router.post("/", (req, res) => {
-    // Send a "Hello World" response
-    res.json("Desde post")
-})
+router.post(
+    "/",
+    [
+        check("name").notEmpty().withMessage("Name is required"),
+        check("price").notEmpty().isNumeric().withMessage("Price must be a positive number"),
+    ],
+    createProduct
+);
 
 router.put("/", (req, res) => {
     // Send a "Hello World" response
