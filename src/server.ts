@@ -1,4 +1,5 @@
 import colors from "colors"
+import cors , {CorsOptions}from "cors"
 import  express  from "express";
 import  router  from "./router";
 import db from "./config/db";
@@ -21,6 +22,19 @@ connectDB()
 
 const server = express()
 
+//ppermitir el acceso a la API desde el cliente
+
+const corsOptions: CorsOptions = {
+    origin: function(origin,callback) {
+      if(origin===process.env.FRONTEND_URL ) {
+        callback(null,true)
+    }else {
+        callback(new Error("No permitido por CORS"))
+      }
+    },
+}
+
+server.use(cors(corsOptions))
 
 //leyendo datos
 

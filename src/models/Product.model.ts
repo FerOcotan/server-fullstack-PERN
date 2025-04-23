@@ -29,7 +29,7 @@ class Product extends Model<Product> {
 
     @Default(true)
     @Column     ({type: DataType.BOOLEAN})
-    availibility: boolean
+    availability: boolean
 
 }
 

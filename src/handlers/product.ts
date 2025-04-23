@@ -81,7 +81,7 @@ export const updateAvailability = async (req: Request, res: Response): Promise<v
         }
 
         // Actualizar disponibilidad
-        product.availibility = !product.dataValues.availibility;
+        product.availability = !product.dataValues.availability;
         await product.save();
 
         res.json({ data: product });
