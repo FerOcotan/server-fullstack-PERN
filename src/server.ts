@@ -1,5 +1,6 @@
 import colors from "colors"
 import cors , {CorsOptions}from "cors"
+import morgan from "morgan"
 import  express  from "express";
 import  router  from "./router";
 import db from "./config/db";
@@ -36,9 +37,13 @@ const corsOptions: CorsOptions = {
 
 server.use(cors(corsOptions))
 
-//leyendo datos
-
+// Leer datos de formularios
 server.use(express.json())
+
+server.use(morgan('dev'))
+
+server.use('/api/products', router)
+
 
 server.use('/api/products', router)
 
